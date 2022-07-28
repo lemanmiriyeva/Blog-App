@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/categories.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+
+
+        <div class="filters filter-button-group">
+            <ul>
+                <h4>
+                    <li class="active" data-filter="*">All</li>
+                    <li data-filter=".1">Business</li>
+                    <li data-filter=".2">Sport</li>
+                    <li data-filter=".3">Technology</li>
+                    <li data-filter=".4">Programming</li>
+                    <li data-filter=".5">Cultural</li>
+                </h4>
+            </ul>
+        </div>
+
+        <div class="content1 grid row">
+
+            {%for post in posts %}
+            <div class="single-content {{post.category_id}} grid-item col-md-4">
+                <div class="card mb-5">
+                    <img src="{{post.img}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">{{post.description}}</p>
+                        {% for author in authors %}
+                        {%if post.author==author.id%}
+                        <p class="card-text"><small class="text-muted">{{author.name}}</small></p>
+                        <p class="card-text"><small class="text-muted">{{post.author_desc}}</small></p>
+                        <p class="card-text" style="margin-top: -20px;"><small
+                                class="text-muted">{{post.posted_at}}</small></p>
+                        {%endif%}
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static',filename='js/categories.js')}}"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<!-- or -->
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+{% endblock %}

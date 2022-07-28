@@ -1,0 +1,129 @@
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    background-color: #fff;
+    /* Black*/
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.item a .dropdown {
+    position: absolute;
+    right: 30px;
+    top: 115px;
+
+    transition: 0.3s ease;
+}
+
+.item .sub-menu {
+    display: none;
+}
+
+.sub-btn {
+    cursor: pointer !important;
+}
+
+.item .sub-menu a {
+    padding-left: 80px;
+    font-size: 18px !important;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    display: block;
+    transition: 0.3s
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+h1,
+.navbar-brand {
+    font-weight: 700;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover,
+.offcanvas a:focus {
+    color: orangered !important;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 40px;
+    margin-left: 50px;
+    font-weight: 100 !important;
+}
+
+.navbar-brand,
+.nav-link {
+    color: black !important;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+.sidenav {
+    right: 0;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.subscribeBtn {
+    width: 100%;
+    background-color: orange;
+    border-radius: 30px;
+}
+
+.content {
+    width: 80%;
+    margin: auto;
+}
+
+.subscribe {
+    background-color: #f8f9fa !important;
+}
+
+.sidenav {
+    right: 0;
+}
+
+nav {
+    border-bottom: 1px solid rgb(223, 220, 220);
+}

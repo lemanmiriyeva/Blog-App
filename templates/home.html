@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h1 class="text-center mb-5 mt-5 text-bold">Trending</h1>
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      {% for post in posts %}
+      {% for status in status %}
+      {% if post.status==status.id %}
+      {% if post.status==1 %}
+      <div class="carousel-item">
+        <a href="/blog/{{post.id}}">
+          <div class="card1 mb-5">
+            <div class="row g-0">
+              <div class="col-md-4 card-image">
+                <img src="{{post.img}}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body ml-5">
+                  {% for category in categories%}
+                  {% if post.category_id==category.id %}
+
+                  <small><b>{{category.name}}</b></small>{% endif %}{% endfor %}<small
+                    class="text-muted">-{{post.posted_at}}</small>
+                  <h1 class="card-title mt-2">{{post.title}}</h1>
+                  <p class="card-text text-secondary">{{post.description}}</p>
+                  <div class="author">
+                    <div class="author-image">
+                      <img
+                        src="https://preview.colorlib.com/theme/magdesign/images/xperson_1.jpg.pagespeed.ic.Zebptmx_f8.webp"
+                        alt="">
+                    </div>
+                    <div class="author-info">
+                      {% for author in authors %}
+                      {% if post.author==author.id %}
+                      <small><b>{{author.name}}</b></small><br>{% endif %}{% endfor %}
+                      <small class="text-muted">{{post.author_desc}}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+      {% endif %}{% endif %}{% endfor %}
+      {% endfor %}
+    </div>
+
+  </div>
+  <div class="blog-list mt-5">
+    <div class="row">
+      {% for post in posts%}
+      {% for status in status%}
+      {% if post.status==status.id %}
+      {% if post.status==3 %}
+      <a href="/blog/{{post.id}}" class="col-md-6 col-sm-12 col-lg-4 mb-5">
+        <div>
+          <div class="card2">
+            <img src="{{post.img}}" class="card-img-top" alt="...">
+            <div class="card-body2 mt-3">
+              {% for category in categories%}
+              {% if post.category_id==category.id %}
+
+              <small><b>{{category.name}}</b></small>{% endif %}{% endfor %}<small
+                class="text-muted">-{{post.posted_at}}</small>
+              <h6 class="card-title mt-2" style="font-weight: 700;">{{post.title}}</h6>
+              <p class="card-text text-secondary" style="font-size: 15px;">{{post.description}}</p>
+              <div class="author2">
+                <div class="author-image">
+                  <img
+                    src="https://preview.colorlib.com/theme/magdesign/images/xperson_1.jpg.pagespeed.ic.Zebptmx_f8.webp"
+                    alt="">
+                </div>
+                <div class="author-info">
+                  {% for author in authors %}
+                  {% if post.author==author.id %}
+                  <small><b>{{author.name}}</b></small><br>{% endif %}{% endfor %}
+                  <small class="text-muted">{{post.author_desc}}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endif %}{% endif %}{% endfor %}
+      {% endfor %}
+
+
+    </div>
+  </div>
+  <div class="popular-posts mt-5">
+    <h1 class="text-center mb-5">Most popular posts</h1>
+    <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="5"
+          aria-label="Slide 6"></button>
+
+      </div>
+      <div class="carousel-inner inner2">
+        {% for post in posts %}
+        {% for status in status %}
+        {% if post.status==status.id %}
+        {% if post.status==2 %}
+        <div class="carousel-item carousel2">
+          <a href="/blog/{{post.id}}">
+            <div class="card1 mb-5">
+              <div class="row g-0">
+                <div class="col-md-4 card-image">
+                  <img src="{{post.img}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body ml-5">
+                    {% for category in categories%}
+                    {% if post.category_id==category.id %}
+
+                    <small><b>{{category.name}}</b></small>{% endif %}{% endfor %}<small
+                      class="text-muted">-{{post.posted_at}}</small>
+                    <h1 class="card-title mt-2">{{post.title}}</h1>
+                    <p class="card-text text-secondary">{{post.description}}</p>
+                    <div class="author">
+                      <div class="author-image">
+                        <img
+                          src="https://preview.colorlib.com/theme/magdesign/images/xperson_1.jpg.pagespeed.ic.Zebptmx_f8.webp"
+                          alt="">
+                      </div>
+                      <div class="author-info">
+                        {% for author in authors %}
+                        {% if post.author==author.id %}
+                        <small><b>{{author.name}}</b></small><br>{% endif %}{% endfor %}
+                        <small class="text-muted">{{post.author_desc}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endif %}{% endif %}{% endfor %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  <div class="categories-div mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Sports</h2>
+        <div class="row">
+          {% for post in posts %}
+          {% for category in categories %}
+          {%if post.category_id==category.id%}
+          {%if category.id==2 %}
+          <a href="/blog/{{post.id}}">
+            <div class="col-md-12">
+              <div class="card4 mb-5">
+                <div class="row g-0">
+                  <div class="col-md-4 card-image4">
+                    <img
+                      src="{{post.img}}"
+                      class="img-fluid rounded mt-5" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body ml-5">
+                      <small><b>{{category.name}}</b></small><small class="text-muted">-{{post.posted_at}}</small>
+                      <h6 class="card-title mt-2" style="font-weight: 700;font-size:20px;">{{post.title}}</h6>
+                      <div class="author4">
+                        <div class="author-image">
+                          <img
+                            src="https://preview.colorlib.com/theme/magdesign/images/xperson_1.jpg.pagespeed.ic.Zebptmx_f8.webp"
+                            alt="">
+                        </div>
+                        <div class="author-info4">
+                          {% for author in authors %}
+                          {% if post.author==author.id %}
+                          <small><b>{{author.name}}</b></small><br>{% endif %}{% endfor %}
+                          <small class="text-muted">{{post.author_desc}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          {%endif%}
+          {%endif%}
+          {% endfor %}
+          {% endfor %}
+      
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2>Business</h2>
+        <div class="row">
+          {% for post in posts %}
+          {% for category in categories %}
+          {%if post.category_id==category.id%}
+          {%if category.id==1 %}
+          <a href="/blog/{{post.id}}">
+            <div class="col-md-12">
+              <div class="card4 mb-5">
+                <div class="row g-0">
+                  <div class="col-md-4 card-image4">
+                    <img
+                      src="{{post.img}}"
+                      class="img-fluid rounded mt-5" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body ml-5">
+                      <small><b>{{category.name}}</b></small><small class="text-muted">-{{post.posted_at}}</small>
+                      <h6 class="card-title mt-2" style="font-weight: 700;font-size:20px;">{{post.title}}</h6>
+                      <div class="author4">
+                        <div class="author-image">
+                          <img
+                            src="https://preview.colorlib.com/theme/magdesign/images/xperson_1.jpg.pagespeed.ic.Zebptmx_f8.webp"
+                            alt="">
+                        </div>
+                        <div class="author-info4">
+                          {% for author in authors %}
+                          {% if post.author==author.id %}
+                          <small><b>{{author.name}}</b></small><br>{% endif %}{% endfor %}
+                          <small class="text-muted">{{post.author_desc}}</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          {%endif%}
+          {%endif%}
+          {%endfor%}
+          {%endfor%}
+      
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static',filename='js/home.js')}}"></script>
+{% endblock %}
